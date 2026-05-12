@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>קווּיז יום הולדת מאי 🎂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    /* ── Reset & Base ─────────────────────────────── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --cream: #f7f0e8;
+      --rose: #e8748a;
+      --rose-lt: #f9d0da;
+      --dark: #1c1c1e;
+      --mid: #6e6e73;
+      --card-bg: #ffffff;
+      --card-gradient: radial-gradient(ellipse at 50% 20%, #f9c5d0 0%, #fde4ea 45%, #fff8fa 100%);
+      --shadow: 0 4px 32px rgba(200, 100, 120, .13);
+    }
+
+    html,
+    body {
+      min-height: 100%;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ── Decorative background blobs ───────────── */
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(249, 197, 208, .35) 0%, transparent 70%);
+      top: -180px;
+      right: -180px;
+    }
+
+    body::after {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(247, 230, 220, .4) 0%, transparent 70%);
+      bottom: -140px;
+      left: -140px;
+    }
+
+    /* ── Screens ──────────────────────────────────── */
+    .screen {
+      display: none;
+      min-height: 100vh;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      position: relative;
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    /* ── Card wrapper ─────────────────────────────── */
+    .card {
+      background: var(--card-gradient);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, .75);
+      padding: 40px 36px;
+      max-width: 520px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      animation: cardIn .5s cubic-bezier(.34, 1.56, .64, 1) both;
+    }
+
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(.96);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* ── Icon circle (replaces candles) ───────────── */
+    .icon-circle {
+      width: 88px;
+      height: 88px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 6px 28px rgba(200, 100, 120, .18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 44px;
+      margin: 0 auto 28px;
+      animation: ringPop .6s cubic-bezier(.34, 1.56, .64, 1) both;
+    }
+
+    /* ── Welcome screen ───────────────────────────── */
+    #screen-welcome .card {
+      text-align: center;
+    }
+
+    .welcome-subtitle {
+      font-size: 12px;
+      color: var(--rose);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .welcome-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 5vw, 30px);
+      line-height: 1.4;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .welcome-title span {
+      color: var(--rose);
+      font-style: italic;
+    }
+
+    .welcome-desc {
+      font-size: 15px;
+      color: var(--mid);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    /* ── Buttons ──────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--dark);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 16px 40px;
+      font-size: 17px;
+      font-weight: 700;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      cursor: pointer;
+      transition: background .15s, transform .15s;
+      letter-spacing: .3px;
+    }
+
+    .btn-primary:hover {
+      background: #3a3a3c;
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    /* ── Progress bar ─────────────────────────────── */
+    .progress-wrap {
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 16px;
+      z-index: 1;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--mid);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .progress-bar-bg {
+      height: 6px;
+      background: rgba(230, 180, 190, .3);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(to left, var(--rose), #f09daa);
+      border-radius: 99px;
+      transition: width .5s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    /* ── Question screen ──────────────────────────── */
+    .question-num {
+      display: inline-block;
+      background: rgba(255, 255, 255, .7);
+      border: 1px solid rgba(232, 116, 138, .25);
+      color: var(--rose);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 5px 14px;
+      border-radius: 99px;
+      margin-bottom: 18px;
+    }
+
+    .question-text {
+      font-size: clamp(18px, 4vw, 22px);
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 28px;
+      color: var(--dark);
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .option-btn {
+      background: rgba(255, 255, 255, .85);
+      border: 1.5px solid rgba(230, 180, 190, .4);
+      border-radius: 20px;
+      padding: 16px 20px;
+      font-size: 16px;
+      font-weight: 500;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--dark);
+      cursor: pointer;
+      text-align: right;
+      transition: all .2s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      backdrop-filter: blur(8px);
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--rose);
+      background: rgba(255, 240, 244, .9);
+      transform: translateX(-3px);
+    }
+
+    .option-btn:disabled {
+      cursor: default;
+    }
+
+    .option-btn.correct {
+      border-color: #4caf50;
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    .option-btn.wrong {
+      border-color: #e57373;
+      background: #ffebee;
+      color: #c62828;
+      animation: shake .4s cubic-bezier(.36, .07, .19, .97);
+    }
+
+    @keyframes shake {
+
+      10%,
+      90% {
+        transform: translateX(-2px);
+      }
+
+      20%,
+      80% {
+        transform: translateX(3px);
+      }
+
+      30%,
+      50%,
+      70% {
+        transform: translateX(-4px);
+      }
+
+      40%,
+      60% {
+        transform: translateX(4px);
+      }
+    }
+
+    .option-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    /* ── Result overlay ───────────────────────────── */
+    .result-overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s;
+    }
+
+    .result-overlay.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .result-overlay.correct-bg {
+      background: rgba(255, 240, 245, 0.96);
+    }
+
+    .result-overlay.wrong-bg {
+      background: rgba(255, 245, 245, 0.96);
+    }
+
+    .result-card {
+      background: var(--card-gradient);
+      border-radius: 32px;
+      box-shadow: 0 8px 48px rgba(180, 100, 120, .18);
+      border: 1px solid rgba(255, 255, 255, .8);
+      padding: 36px 32px;
+      max-width: 460px;
+      width: 100%;
+      text-align: center;
+      animation: resultCardIn .4s cubic-bezier(.34, 1.56, .64, 1) both;
+    }
+
+    @keyframes resultCardIn {
+      from {
+        transform: scale(.8);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .result-emoji {
+      font-size: 64px;
+      margin-bottom: 12px;
+      display: block;
+      animation: bounceIn .5s cubic-bezier(.34, 1.56, .64, 1) both .1s;
+    }
+
+    @keyframes bounceIn {
+      from {
+        transform: scale(0) rotate(-10deg);
+      }
+
+      to {
+        transform: scale(1) rotate(0deg);
+      }
+    }
+
+    .result-label {
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .result-label.correct {
+      color: #4caf50;
+    }
+
+    .result-label.wrong {
+      color: var(--rose);
+    }
+
+    .result-answer-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--mid);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .result-answer-text {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--dark);
+      background: rgba(255, 255, 255, .6);
+      border-radius: 16px;
+      padding: 14px 18px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(255, 255, 255, .8);
+    }
+
+    .btn-next {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--dark);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 14px 34px;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      cursor: pointer;
+      transition: background .15s, transform .15s;
+      letter-spacing: .3px;
+    }
+
+    .btn-next:hover {
+      background: #3a3a3c;
+      transform: translateY(-1px);
+    }
+
+    /* ── Confetti particles ───────────────────────── */
+    .confetti-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 99;
+      overflow: hidden;
+    }
+
+    .confetti-piece {
+      position: absolute;
+      top: -20px;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      opacity: 0;
+      animation: confettiFall linear forwards;
+    }
+
+    @keyframes confettiFall {
+      0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(720deg);
+      }
+    }
+
+    /* Floating hearts */
+    .heart-particle {
+      position: fixed;
+      font-size: 24px;
+      pointer-events: none;
+      z-index: 99;
+      animation: heartFloat 1.5s ease-out forwards;
+    }
+
+    @keyframes heartFloat {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-200px) scale(1.5);
+      }
+    }
+
+    /* ── Final screen ─────────────────────────────── */
+    #screen-final .card {
+      text-align: center;
+    }
+
+    .final-score-ring {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      box-shadow: 0 8px 30px rgba(30, 30, 30, .25);
+      animation: ringPop .6s cubic-bezier(.34, 1.56, .64, 1) both;
+    }
+
+    @keyframes ringPop {
+      from {
+        transform: scale(0) rotate(-20deg);
+      }
+
+      to {
+        transform: scale(1) rotate(0deg);
+      }
+    }
+
+    .final-score-num {
+      font-size: 40px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .final-score-denom {
+      font-size: 14px;
+      color: rgba(255, 255, 255, .8);
+      font-weight: 500;
+    }
+
+    .final-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(20px, 4.5vw, 26px);
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    .final-msg {
+      font-size: 15px;
+      color: var(--mid);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .stars {
+      font-size: 28px;
+      letter-spacing: 4px;
+      margin-bottom: 16px;
+    }
+
+    /* ── Q1 sticky image ─────────────────────────── */
+    .q1-sticky {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .q1-sticky.visible {
+      display: flex;
+    }
+
+    .q1-sticky img {
+      width: 300px;
+      max-width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 6px 28px rgba(0, 0, 0, .14);
+    }
+
+    .q1-sticky-label {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: .2px;
+    }
+
+    /* ── Skip button ─────────────────────────────── */
+    .btn-skip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      color: var(--mid);
+      border: 1.5px solid rgba(110, 110, 115, .25);
+      border-radius: 50px;
+      padding: 10px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      cursor: pointer;
+      transition: all .2s;
+      margin-top: 16px;
+      align-self: center;
+    }
+
+    .btn-skip:hover {
+      color: var(--dark);
+      border-color: var(--mid);
+      background: rgba(110, 110, 115, .07);
+    }
+
+    /* ── Mobile tweaks ────────────────────────────── */
+    @media (max-width: 480px) {
+      .card {
+        padding: 28px 20px;
+      }
+
+      .result-card {
+        padding: 28px 20px;
+      }
+    }
+
+    /* ════════════════════════════════════════════════
+       INTRO SCREEN
+    ════════════════════════════════════════════════ */
+    #screen-intro {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: radial-gradient(ellipse at 50% 65%, #3d0e20 0%, #1c0712 50%, #080308 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    #screen-intro.intro-exit {
+      animation: introSlideOut .85s cubic-bezier(.76, 0, .24, 1) forwards;
+      pointer-events: none;
+    }
+
+    @keyframes introSlideOut {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-100vh);
+        opacity: .7;
+      }
+    }
+
+    /* ── Floating particles ─────────────────────── */
+    .intro-particle {
+      position: absolute;
+      pointer-events: none;
+      animation: particleRise linear infinite;
+    }
+
+    @keyframes particleRise {
+      0% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        opacity: 0;
+      }
+
+      8% {
+        opacity: 1;
+      }
+
+      88% {
+        opacity: .5;
+      }
+
+      100% {
+        transform: translateY(-105vh) rotate(360deg) scale(.3);
+        opacity: 0;
+      }
+    }
+
+    /* ── Heart SVG container ────────────────────── */
+    .intro-heart-svg {
+      width: min(210px, 52vw);
+      height: min(190px, 47vw);
+      margin-bottom: 32px;
+      overflow: visible;
+      filter: drop-shadow(0 0 28px rgba(232, 116, 138, .45));
+    }
+
+    /* glow halo — appears with fill, then softly pulses */
+    .intro-heart-glow {
+      fill: none;
+      stroke: rgba(249, 160, 184, .3);
+      stroke-width: 12;
+      transform-box: fill-box;
+      transform-origin: center;
+      opacity: 0;
+      animation:
+        haloIn .6s ease forwards 1.85s,
+        haloPulse 1.5s ease-in-out infinite 2.6s;
+    }
+
+    @keyframes haloIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes haloPulse {
+
+      0%,
+      100% {
+        stroke-width: 12;
+        opacity: .25;
+      }
+
+      50% {
+        stroke-width: 22;
+        opacity: .5;
+      }
+    }
+
+    /* fill — pops in once stroke completes, then pulses */
+    .intro-heart-fill {
+      fill: #e8748a;
+      transform-box: fill-box;
+      transform-origin: center;
+      opacity: 0;
+      animation:
+        fillPop .55s cubic-bezier(.34, 1.56, .64, 1) forwards 1.85s,
+        heartBeat 1.5s ease-in-out infinite 2.7s;
+    }
+
+    @keyframes fillPop {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes heartBeat {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      14% {
+        transform: scale(1.08);
+      }
+
+      28% {
+        transform: scale(1);
+      }
+
+      42% {
+        transform: scale(1.05);
+      }
+
+      56% {
+        transform: scale(1);
+      }
+    }
+
+    /* stroke — draws itself in */
+    .intro-heart-draw {
+      fill: none;
+      stroke: url(#heartGrad);
+      stroke-width: 3.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      animation: drawStroke 1.55s ease-in-out forwards .35s;
+    }
+
+    @keyframes drawStroke {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    /* ── Intro text ─────────────────────────────── */
+    .intro-text-wrap {
+      text-align: center;
+      direction: rtl;
+    }
+
+    .intro-mazal {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 11vw, 76px);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.5px;
+      opacity: 0;
+      transform: translateY(36px) scale(.94);
+      animation: textIn .85s cubic-bezier(.34, 1.56, .64, 1) forwards 2.05s;
+      text-shadow: 0 0 40px rgba(255, 255, 255, .15);
+    }
+
+    .intro-loto {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 8vw, 54px);
+      font-style: italic;
+      color: #f9a0b8;
+      margin-top: 6px;
+      opacity: 0;
+      transform: translateY(36px) scale(.94);
+      animation: textIn .85s cubic-bezier(.34, 1.56, .64, 1) forwards 2.6s;
+      text-shadow: 0 0 30px rgba(232, 116, 138, .4);
+    }
+
+    @keyframes textIn {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* ── Tap hint ───────────────────────────────── */
+    .intro-hint {
+      position: absolute;
+      bottom: 28px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, .28);
+      letter-spacing: 2.5px;
+      opacity: 0;
+      animation: textIn .6s ease forwards 3.8s;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══════════════════════════════════
+     INTRO ANIMATION
+══════════════════════════════════ -->
+  <div id="screen-intro" onclick="skipIntro()">
+
+    <!-- Heart SVG -->
+    <svg class="intro-heart-svg" viewBox="0 0 100 85" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#ffc8d8" />
+          <stop offset="50%" stop-color="#f07090" />
+          <stop offset="100%" stop-color="#c84060" />
+        </linearGradient>
+      </defs>
+      <!-- glow halo -->
+      <path class="intro-heart-glow"
+        d="M50 22C50 12 42 5 30 5 18 5 10 14 10 26 10 43 29 57 50 73 71 57 90 43 90 26 90 14 82 5 70 5 58 5 50 12 50 22Z" />
+      <!-- fill -->
+      <path class="intro-heart-fill"
+        d="M50 22C50 12 42 5 30 5 18 5 10 14 10 26 10 43 29 57 50 73 71 57 90 43 90 26 90 14 82 5 70 5 58 5 50 12 50 22Z" />
+      <!-- animated stroke draw -->
+      <path class="intro-heart-draw" pathLength="1"
+        d="M50 22C50 12 42 5 30 5 18 5 10 14 10 26 10 43 29 57 50 73 71 57 90 43 90 26 90 14 82 5 70 5 58 5 50 12 50 22Z" />
+    </svg>
+
+    <!-- Text -->
+    <div class="intro-text-wrap">
+      <span class="intro-mazal">מזל טוב</span>
+      <span class="intro-loto">לוטו שלי 💕</span>
+    </div>
+
+    <span class="intro-hint">לחצי להמשיך</span>
+  </div>
+
+  <!-- Confetti container -->
+  <div class="confetti-container" id="confettiContainer"></div>
+
+  <!-- ══════════════════════════════════
+     SCREEN 1 — WELCOME
+══════════════════════════════════ -->
+  <div id="screen-welcome" class="screen active">
+    <div class="card">
+      <div class="icon-circle">🎂</div>
+
+      <p class="welcome-subtitle">יום הולדת שמח מאי</p>
+      <h1 class="welcome-title">
+        אלעד כבר זכה בלוטו,<br />
+        עכשיו התור של <span>מאי</span> לנסות
+      </h1>
+      <p class="welcome-desc">
+        שאלון קטן על שנינו — מבוסס על שיחות הווצאפ שלנו 💕<br />
+        10 שאלות מעניינות ביותר
+      </p>
+
+      <button class="btn-primary" onclick="startQuiz()">
+        בואי נתחיל! 💕
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+     SCREEN 2 — QUESTION
+══════════════════════════════════ -->
+  <div id="screen-question" class="screen">
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span id="progressText">שאלה 1 מתוך 10</span>
+        <span id="scoreText">0 ✓</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="card" id="questionCard">
+      <span class="question-num" id="questionNum">שאלה 1</span>
+      <p class="question-text" id="questionText"></p>
+      <div class="options" id="optionsContainer"></div>
+      <button class="btn-skip" id="btnSkip" onclick="skipQuestion()">דלג על שאלה ←</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+     SCREEN 3 — FINAL
+══════════════════════════════════ -->
+  <div id="screen-final" class="screen">
+    <div class="card">
+      <div class="final-score-ring">
+        <span class="final-score-num" id="finalScoreNum">0</span>
+        <span class="final-score-denom">מתוך 10</span>
+      </div>
+
+      <div class="stars" id="finalStars">⭐⭐⭐</div>
+      <h2 class="final-title" id="finalTitle">כל הכבוד!</h2>
+      <p class="final-msg" id="finalMsg"></p>
+
+      <button class="btn-primary" onclick="restartQuiz()">
+        לשחק שוב 🔄
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+     RESULT OVERLAY
+══════════════════════════════════ -->
+  <div class="result-overlay" id="resultOverlay">
+    <div class="result-card">
+      <span class="result-emoji" id="resultEmoji">🎉</span>
+      <div class="result-label" id="resultLabel">נכון!</div>
+      <div class="result-answer-title">התשובה הנכונה:</div>
+      <div class="result-answer-text" id="resultAnswerText"></div>
+      <div class="q1-sticky" id="q1Sticky">
+        <img src="sticky.jpg" alt="sticky" />
+        <span class="q1-sticky-label">מה הקשר דביקים?</span>
+      </div>
+      <div class="q1-sticky" id="q2Sticky">
+        <img src="suspect.JPG" alt="suspect" />
+        <span class="q1-sticky-label">האם זה גם אומר שהוא אוהב יותר?</span>
+      </div>
+      <div class="q1-sticky" id="q3Sticky">
+        <img src="may_carry.JPG" alt="may carry" />
+        <span class="q1-sticky-label">אפשר להגיד שמאי ממש ״מרימה״ את הקשר</span>
+      </div>
+      <div class="q1-sticky" id="q4Sticky">
+        <img src="sure.JPG" alt="sure" />
+        <span class="q1-sticky-label">טוב נו זה היה די ברור</span>
+      </div>
+      <div class="q1-sticky" id="q5Sticky">
+        <img src="mami.JPG" alt="mami" />
+      </div>
+      <div class="q1-sticky" id="q6Sticky">
+        <img src="elad_question.JPG" alt="elad question" />
+        <span class="q1-sticky-label">אבל בטח זה פשוט דברים שהוא לא זכר</span>
+      </div>
+      <div class="q1-sticky" id="q7Sticky">
+        <img src="may_sorry.jpg" alt="may sorry" />
+        <span class="q1-sticky-label">סליחה שאני כוסית</span>
+      </div>
+      <div class="q1-sticky" id="q8Sticky">
+        <img src="days_row.jpg" alt="days row" />
+      </div>
+      <button class="btn-next" id="btnNext" onclick="nextQuestion()">
+        <span id="btnNextLabel">לשאלה הבאה</span> ←
+      </button>
+    </div>
+  </div>
+
+
+  <script>
+    /* ══════════════════════════════════
+       INTRO ANIMATION
+    ══════════════════════════════════ */
+    (function () {
+      const intro = document.getElementById('screen-intro');
+
+      /* spawn floating particles (dots + hearts) */
+      const symbols = ['', '', '', '·', '·', '·', '·'];
+      for (let i = 0; i < 40; i++) {
+        const el = document.createElement('div');
+        el.className = 'intro-particle';
+        const isHeart = i < 14;
+        const size = isHeart ? (Math.random() * 14 + 10) : (Math.random() * 5 + 2);
+        const colors = ['#f9a0b8', '#fce4ec', '#e8748a', '#ffd6e0', '#fff0f3', '#fff'];
+        Object.assign(el.style, {
+          fontSize: isHeart ? size + 'px' : '0',
+          width: isHeart ? 'auto' : size + 'px',
+          height: isHeart ? 'auto' : size + 'px',
+          background: isHeart ? 'none' : colors[Math.floor(Math.random() * colors.length)],
+          borderRadius: isHeart ? '0' : '50%',
+          color: colors[Math.floor(Math.random() * 3)],
+          left: (Math.random() * 100) + '%',
+          bottom: (Math.random() * 20 - 10) + '%',
+          opacity: '0',
+          animationDuration: (Math.random() * 7 + 5) + 's',
+          animationDelay: (Math.random() * 4) + 's',
+        });
+        el.textContent = isHeart ? symbols[Math.floor(Math.random() * symbols.length)] : '';
+        intro.appendChild(el);
+      }
+
+      let gone = false;
+      function doExit() {
+        if (gone) return;
+        gone = true;
+        intro.classList.add('intro-exit');
+        setTimeout(() => { intro.style.display = 'none'; }, 880);
+      }
+
+      window.skipIntro = doExit;
+      setTimeout(doExit, 5200); /* auto-dismiss after 5.2 s */
+    })();
+
+    /* ══════════════════════════════════
+       QUIZ DATA
+    ══════════════════════════════════ */
+    const QUESTIONS = [
+      {
+        q: "מה ממוצע ההודעות היומי שלנו?",
+        options: ["מעל 100 הודעות", "מתחת ל-100 הודעות"],
+        correct: 0,
+        explanation: "מעל! אנחנו על ממוצע של 150 הודעות ביום 📱"
+      },
+      {
+        q: "מי שולח יותר ❤️?",
+        options: ["אלעד", "מאי"],
+        correct: 0,
+        explanation: "אלעד! אבל בקצת בלבד — אלעד שלח 6,947 ומאי שלחה 6,230 ❤️"
+      },
+      {
+        q: "מי מתחיל/ה יותר שיחות?",
+        options: ["אלעד", "מאי"],
+        correct: 1,
+        explanation: "מאי! מאי התחילה 413 שיחות מול 320 של אלעד 💬"
+      },
+      {
+        q: "מי שולח/ת יותר תמונות?",
+        options: ["אלעד", "מאי"],
+        correct: 1,
+        explanation: "מאי שולחת פי 2.6 יותר תמונות — 2,386 מול 908 של אלעד 📸"
+      },
+      {
+        q: "מה הכינוי שאנחנו משתמשים בו הכי הרבה?",
+        options: ["מאמי", "חיים שלי", "אהבה שלי"],
+        correct: 0,
+        explanation: "מאמי! כ-5,910 פעמים ביחד 🥰"
+      },
+      {
+        q: "מי שואל יותר שאלות?",
+        options: ["אלעד", "מאי"],
+        correct: 0,
+        explanation: "אלעד שאל 917 שאלות יותר ממאי"
+      },
+      {
+        q: "מי אומר \"סליחה\" יותר פעמים?",
+        options: ["אלעד", "מאי"],
+        correct: 1,
+        explanation: "מאי בפער!! 130 מול 28 של אלעד — כנראה רוב הפעמים זה \"סליחה שאני כל כך מושלמת\" 💅"
+      },
+      {
+        q: "כמה ימים רצופים דיברנו בלי הפסקה?",
+        options: ["מעל 350 יום", "מתחת ל-350 יום"],
+        correct: 0,
+        explanation: "מעל! 373 ימים רצופים בלי יום אחד הפסקה 🔥"
+      },
+      {
+        q: "באיזו שעה אנחנו הכי פעילים?",
+        options: ["בוקר 9:00", "אחה\"צ 15:00", "לילה 23:00"],
+        correct: 1,
+        explanation: "אחה\"צ 15:00! ואחר כך שוב בערב בין 22:00 ל-23:00 🌙"
+      },
+      {
+        q: "מה ההודעה הארוכה ביותר שנשלחה — ועל מה היא הייתה?",
+        options: ["סיכום פסיקה משפטית", "משהו מצחיק", "ויכוח"],
+        correct: 0,
+        explanation: "סיכום פסיקה משפטית!! 😂 אלעד שלח הודעה של 3,105 תווים ב-06/10/2024 — כי למה לא"
+      }
+    ];
+
+    const FINAL_MESSAGES = [
+      { min: 0, max: 3, stars: "💔", title: "ממש לא הכרנו...", msg: "טוב, כנראה צריך לדבר יותר 😂 אבל בכל מקרה — יום הולדת שמח מאי! אלעד אוהב אותך מאוד ❤️" },
+      { min: 4, max: 6, stars: "⭐⭐⭐", title: "לא רע!", msg: "יש לך בסיס טוב, אבל יש עוד דברים לגלות על שנינו 😄 יום הולדת שמח מאי! ❤️" },
+      { min: 7, max: 8, stars: "⭐⭐⭐⭐", title: "וואו, את מכירה אותנו!", msg: "כמעט מושלם! את ממש מכירה אותנו טוב 🥰 יום הולדת שמח מאי, אלעד אוהב אותך ❤️" },
+      { min: 9, max: 10, stars: "🌟🌟🌟🌟🌟", title: "מושלמת! כמוך תמיד 💅", msg: "10 מתוך 10 — בדיוק כמוך! את מכירה אותנו טוב יותר ממני 😂 יום הולדת שמח מאי הכי יפה! אלעד אוהב אותך עד הירח וחזרה ❤️🌙" }
+    ];
+
+    /* ══════════════════════════════════
+       STATE
+    ══════════════════════════════════ */
+    let currentQ = 0;
+    let score = 0;
+    let answered = false;
+
+    /* ══════════════════════════════════
+       NAVIGATION HELPERS
+    ══════════════════════════════════ */
+    function showScreen(id) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    /* ══════════════════════════════════
+       START / RESTART
+    ══════════════════════════════════ */
+    function startQuiz() {
+      currentQ = 0;
+      score = 0;
+      showScreen('screen-question');
+      renderQuestion();
+    }
+
+    function restartQuiz() {
+      startQuiz();
+    }
+
+    /* ══════════════════════════════════
+       RENDER QUESTION
+    ══════════════════════════════════ */
+    function renderQuestion() {
+      answered = false;
+      document.getElementById('btnSkip').style.display = '';
+      const data = QUESTIONS[currentQ];
+
+      document.getElementById('questionNum').textContent = `שאלה ${currentQ + 1}`;
+      document.getElementById('questionText').textContent = data.q;
+      document.getElementById('progressText').textContent = `שאלה ${currentQ + 1} מתוך ${QUESTIONS.length}`;
+      document.getElementById('scoreText').textContent = `${score} ✓`;
+      document.getElementById('progressFill').style.width = (currentQ / QUESTIONS.length * 100) + '%';
+
+      const container = document.getElementById('optionsContainer');
+      container.innerHTML = '';
+
+      data.options.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.innerHTML = `<span class="option-icon">${['🅰️', '🅱️', '🅾️'][i]}</span>${opt}`;
+        btn.onclick = () => selectAnswer(i, btn);
+        container.appendChild(btn);
+      });
+
+      // Animate card in
+      const card = document.getElementById('questionCard');
+      card.style.animation = 'none';
+      void card.offsetHeight; // reflow
+      card.style.animation = 'cardIn .45s cubic-bezier(.34,1.56,.64,1) both';
+    }
+
+    /* ══════════════════════════════════
+       ANSWER SELECTION
+    ══════════════════════════════════ */
+    function selectAnswer(index, clickedBtn) {
+      if (answered) return;
+      answered = true;
+      document.getElementById('btnSkip').style.display = 'none';
+
+      const data = QUESTIONS[currentQ];
+      const correct = index === data.correct;
+      const allBtns = document.querySelectorAll('.option-btn');
+
+      allBtns.forEach(b => b.disabled = true);
+      allBtns[data.correct].classList.add('correct');
+
+      if (correct) {
+        score++;
+        clickedBtn.classList.add('correct');
+        spawnHearts(clickedBtn);
+        burstConfetti();
+        showResult(true, data.explanation);
+      } else {
+        clickedBtn.classList.add('wrong');
+        showResult(false, data.explanation);
+      }
+    }
+
+    /* ══════════════════════════════════
+       RESULT OVERLAY
+    ══════════════════════════════════ */
+    function showResult(isCorrect, explanation) {
+      const overlay = document.getElementById('resultOverlay');
+      const emoji = document.getElementById('resultEmoji');
+      const label = document.getElementById('resultLabel');
+      const ansText = document.getElementById('resultAnswerText');
+      const btnLabel = document.getElementById('btnNextLabel');
+      const isLast = currentQ === QUESTIONS.length - 1;
+
+      // Per-question extras: hide emoji + show image for Q1 and Q2
+      const isQ1 = currentQ === 0;
+      const isQ2 = currentQ === 1;
+      const isQ3 = currentQ === 2;
+      const isQ4 = currentQ === 3;
+      const isQ5 = currentQ === 4;
+      const isQ6 = currentQ === 5;
+      document.getElementById('q1Sticky').classList.toggle('visible', isQ1);
+      document.getElementById('q2Sticky').classList.toggle('visible', isQ2);
+      document.getElementById('q3Sticky').classList.toggle('visible', isQ3);
+      document.getElementById('q4Sticky').classList.toggle('visible', isQ4);
+      document.getElementById('q5Sticky').classList.toggle('visible', isQ5);
+      const isQ7 = currentQ === 6;
+      document.getElementById('q6Sticky').classList.toggle('visible', isQ6);
+      const isQ8 = currentQ === 7;
+      document.getElementById('q7Sticky').classList.toggle('visible', isQ7);
+      document.getElementById('q8Sticky').classList.toggle('visible', isQ8);
+      document.getElementById('resultEmoji').style.display = (isQ1 || isQ2 || isQ3 || isQ4 || isQ5 || isQ6 || isQ7 || isQ8) ? 'none' : 'block';
+
+      overlay.className = 'result-overlay show ' + (isCorrect ? 'correct-bg' : 'wrong-bg');
+
+      if (isCorrect) {
+        const emojis = ['🎉', '🎊', '💯', '🥳', '✨', '💃', '🎈'];
+        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        label.textContent = 'כל הכבוד! נכון! 🎉';
+        label.className = 'result-label correct';
+      } else {
+        const emojis = ['😅', '😬', '🙈', '💔', '🤔', '😂'];
+        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        label.textContent = 'אוי, לא נכון 😅';
+        label.className = 'result-label wrong';
+      }
+
+      ansText.textContent = explanation;
+      btnLabel.textContent = isLast ? 'לתוצאה הסופית' : 'לשאלה הבאה';
+
+      // force re-animation of result card
+      const rc = overlay.querySelector('.result-card');
+      rc.style.animation = 'none';
+      void rc.offsetHeight;
+      rc.style.animation = 'resultCardIn .4s cubic-bezier(.34,1.56,.64,1) both';
+    }
+
+    function nextQuestion() {
+      document.getElementById('resultOverlay').classList.remove('show');
+      currentQ++;
+
+      if (currentQ >= QUESTIONS.length) {
+        showFinal();
+      } else {
+        renderQuestion();
+      }
+    }
+
+    function skipQuestion() {
+      if (answered) return;
+      currentQ++;
+      if (currentQ >= QUESTIONS.length) {
+        showFinal();
+      } else {
+        renderQuestion();
+      }
+    }
+
+    /* ══════════════════════════════════
+       FINAL SCREEN
+    ══════════════════════════════════ */
+    function showFinal() {
+      showScreen('screen-final');
+
+      document.getElementById('finalScoreNum').textContent = score;
+
+      const entry = FINAL_MESSAGES.find(e => score >= e.min && score <= e.max)
+        || FINAL_MESSAGES[FINAL_MESSAGES.length - 1];
+
+      document.getElementById('finalStars').textContent = entry.stars;
+      document.getElementById('finalTitle').textContent = entry.title;
+      document.getElementById('finalMsg').textContent = entry.msg;
+
+      // Big confetti burst
+      setTimeout(burstConfetti, 200);
+      setTimeout(burstConfetti, 600);
+      setTimeout(burstConfetti, 1000);
+    }
+
+    /* ══════════════════════════════════
+       CONFETTI
+    ══════════════════════════════════ */
+    function burstConfetti() {
+      const container = document.getElementById('confettiContainer');
+      const colors = ['#e8748a', '#f09daa', '#f9c5d0', '#fde4ea', '#ff6b9d', '#ffb8c6', '#ff9dc6'];
+      const count = 60;
+
+      for (let i = 0; i < count; i++) {
+        const piece = document.createElement('div');
+        piece.className = 'confetti-piece';
+
+        const x = 10 + Math.random() * 80;
+        const dur = .8 + Math.random() * .8;
+        const size = 6 + Math.random() * 8;
+        const rot = Math.random() > .5 ? '50%' : '2px';
+
+        piece.style.cssText = `
+      left: ${x}vw;
+      width: ${size}px; height: ${size}px;
+      background: ${colors[Math.floor(Math.random() * colors.length)]};
+      border-radius: ${rot};
+      animation-duration: ${dur}s;
+      animation-delay: ${Math.random() * .3}s;
+    `;
+        container.appendChild(piece);
+        setTimeout(() => piece.remove(), (dur + .4) * 1000);
+      }
+    }
+
+    /* ══════════════════════════════════
+       FLOATING HEARTS
+    ══════════════════════════════════ */
+    function spawnHearts(btn) {
+      const rect = btn.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top;
+      const emojis = ['❤️', '💕', '💖', '💗', '🩷'];
+
+      for (let i = 0; i < 7; i++) {
+        const h = document.createElement('div');
+        h.className = 'heart-particle';
+        h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        h.style.cssText = `
+      left: ${centerX + (Math.random() - .5) * 80}px;
+      top:  ${centerY}px;
+      animation-delay: ${i * 80}ms;
+      animation-duration: ${1.2 + Math.random() * .6}s;
+      font-size: ${18 + Math.random() * 16}px;
+    `;
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 2500);
+      }
+    }
+  </script>
+
+</body>
+
+</html>

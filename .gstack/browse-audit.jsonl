@@ -1,0 +1,5 @@
+{"ts":"2026-05-12T13:09:56.286Z","cmd":"goto","args":"file:///Users/eladraz/Active/May_New/index.html","origin":"file:///Users/eladraz/Active/May_New/index.html","durationMs":274,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-12T13:09:59.669Z","cmd":"screenshot","args":"/tmp/intro_0s.png","origin":"file:///Users/eladraz/Active/May_New/index.html","durationMs":135,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-12T13:10:12.836Z","cmd":"console","args":"","origin":"file:///Users/eladraz/Active/May_New/index.html","durationMs":1,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-12T13:10:16.762Z","cmd":"js","args":"skipIntro()","origin":"file:///Users/eladraz/Active/May_New/index.html","durationMs":1,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-12T13:10:17.908Z","cmd":"screenshot","args":"/tmp/after_intro.png","origin":"file:///Users/eladraz/Active/May_New/index.html","durationMs":93,"status":"ok","hasCookies":false,"mode":"launched"}
