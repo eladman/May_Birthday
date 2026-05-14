@@ -327,6 +327,8 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity .3s;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .result-overlay.show {
@@ -613,6 +615,13 @@
 
       .result-card {
         padding: 28px 20px;
+        max-height: none;
+      }
+
+      .result-overlay {
+        justify-content: flex-start;
+        padding-top: 40px;
+        padding-bottom: 40px;
       }
     }
 
