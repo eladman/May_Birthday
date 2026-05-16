@@ -555,6 +555,46 @@
       margin-bottom: 16px;
     }
 
+    .birthday-greeting {
+      margin-top: 32px;
+      padding: 24px 20px;
+      background: linear-gradient(135deg, rgba(255, 105, 135, 0.12), rgba(255, 182, 193, 0.2));
+      border: 1.5px solid rgba(255, 105, 135, 0.35);
+      border-radius: 18px;
+      text-align: right;
+      direction: rtl;
+      animation: greetingFadeIn 1s ease 0.8s both;
+    }
+
+    @keyframes greetingFadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .birthday-greeting-heart {
+      font-size: 36px;
+      display: block;
+      text-align: center;
+      margin-bottom: 14px;
+      animation: heartBeat 1.2s ease-in-out infinite;
+    }
+
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      14%       { transform: scale(1.18); }
+      28%       { transform: scale(1); }
+      42%       { transform: scale(1.12); }
+      70%       { transform: scale(1); }
+    }
+
+    .birthday-greeting-text {
+      font-size: 15px;
+      color: var(--dark);
+      line-height: 2;
+      font-weight: 500;
+      margin: 0;
+    }
+
     /* ── Q1 sticky image ─────────────────────────── */
     .q1-sticky {
       display: none;
@@ -936,6 +976,13 @@
       <div class="stars" id="finalStars">⭐⭐⭐</div>
       <h2 class="final-title" id="finalTitle">כל הכבוד!</h2>
       <p class="final-msg" id="finalMsg"></p>
+
+      <div class="birthday-greeting">
+        <span class="birthday-greeting-heart">❤️</span>
+        <p class="birthday-greeting-text">
+          לוטו שלי, זאת הזדמנות להגיד לך שאת הדבר הכי טוב שקרה לי בחיים, אני אוהב אותך כמו שלא אהבתי בחיים, מתגעגע כמו שלא התגעגעתי בחיים ובאמת כל יום מודה על הזכות הענקית שיש לי אותך. בשנה האחרונה הוכחת לי כל פעם מחדש איזה יכולות מדהימות יש לך ואין גאה ממני בעולם בך ובדרך שלך, אני מאמין בך בלב שלם, בטוח בהצלחתך, ותמיד אהיה מאחורייך לא משנה מה. אני אוהב אותך הכי בעולם ❤️
+        </p>
+      </div>
 
       <button class="btn-primary" onclick="restartQuiz()">
         לשחק שוב 🔄
